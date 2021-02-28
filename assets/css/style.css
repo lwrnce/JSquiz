@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+}
+
+:root {
+    --light-black: #2e2c2caf;
+    --hue-correct: rgb(70, 146, 70);
+    --hue-wrong: rgb(233, 0, 0);
+    --purple: #7731fa;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-black);
+}
+
+.container {
+    width: 60%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 50px;
+    box-shadow: 0 0 10px 2px;
+}
+
+.btn-grid {
+    display: grid;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.btn {
+    background-color: var(--purple);
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    color: whitesmoke;
+    outline: none;
+}
+
+.btn:hover {
+    border-color: black;
+    opacity: 0.6;
+}
+
+.btn.correct {
+    --hue: var(--hue-correct);
+    color: black;
+}
+
+.btn.wrong {
+    --hue: var(--hue-wrong);
+    color: black;
+}
+
+.controls, .results-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-btn, .submit-btn {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+.hide {
+    display: none;
+}
