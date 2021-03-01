@@ -76,12 +76,12 @@ body.incorrect {
 }
 
 .btn.correct {
-    --hue: var(--hue-correct);
+    background-color: var(--hue-correct);
     color: black;
 }
 
 .btn.incorrect {
-    --hue: var(--hue-incorrect);
+    background-color: var(--hue-incorrect);
 }
 
 .start-btn, .next-btn, .submit-btn {

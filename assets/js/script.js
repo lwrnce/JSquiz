@@ -4,7 +4,9 @@ const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const nextButton = document.getElementById('next-btn')
 const timeLeft = document.getElementById('timeLeft')
+const submitButton = document.getElementById('submit-btn')
 
+var sec
 let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startQuiz)
@@ -14,8 +16,8 @@ nextButton.addEventListener('click', () => {
 })
 
 function startQuiz() {
-    console.log('Started')
     startButton.classList.add('hide')
+    submitButton.classList.add('hide')
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
     questionContainer.classList.remove('hide')
@@ -24,7 +26,7 @@ function startQuiz() {
 }
 
 function startTimer() {
-    var sec = 180;
+    sec = 180
     var timer = setInterval(function() {
         document.getElementById('time').innerHTML=sec;
         sec--;
@@ -69,12 +71,12 @@ function yourAnswer(e) {
         answerCheck(button, button.dataset.correct)
     })
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
-        nextButton.classList.remove('hide)')
+        nextButton.classList.remove('hide')
     } else {
-        startButton.innerText = 'Take it again!'
+        startButton.innerText = ('Take it again!')
         startButton.classList.remove('hide')
+        submitButton.classList.remove('hide')
     }
-    nextButton.classList.remove('hide')
 }
 
 function answerCheck(element, correct) {
@@ -83,6 +85,7 @@ function answerCheck(element, correct) {
         element.classList.add('correct')
     } else {
         element.classList.add('incorrect')
+        sec -= 3
     }
 }
 
@@ -116,7 +119,7 @@ const questions = [
     },
 
     {
-        question:'Commonly used data structures DO NOT include: ',
+        question:'Commonly used data structures DO NOT include:',
         answers: [
             { text: 'strings', correct: false },
             { text: 'booleans', correct: true },
@@ -168,6 +171,6 @@ const questions = [
             { text: '<body>', correct: false },
         ] 
     
-    },
+    }
 ]
 
