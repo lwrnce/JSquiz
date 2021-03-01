@@ -3,12 +3,7 @@ const questionContainer = document.getElementById('quiz-box')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const nextButton = document.getElementById('next-btn')
-
-const resultsBox = document.getElementById("results");
-const highscoresBox = document.getElementById("highscores");
-const timerBox = document.getElementById("timer");
-const submitButton = document.getElementById("submit");
-
+const timeLeft = document.getElementById('timeLeft')
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -24,7 +19,19 @@ function startQuiz() {
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
     questionContainer.classList.remove('hide')
+    startTimer()
     nextQuestion()
+}
+
+function startTimer() {
+    var sec = 180;
+    var timer = setInterval(function() {
+        document.getElementById('time').innerHTML=sec;
+        sec--;
+        if (sec < 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
 }
 
 function nextQuestion() {
@@ -79,6 +86,7 @@ function answerCheck(element, correct) {
     }
 }
 
+
 function clearClass(element) {
     element.classList.remove('correct')
     element.classList.remove('incorrect')
@@ -102,7 +110,7 @@ const questions = [
             { text: 'Javascript', correct: false },
             { text: 'terminal/bash', correct: false },
             { text: 'for loops', correct: false },
-            { text: '<console.log', correct: true },
+            { text: 'console.log', correct: true },
         ] 
     
     },
