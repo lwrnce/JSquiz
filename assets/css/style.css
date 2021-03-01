@@ -90,8 +90,7 @@ body.incorrect {
     padding: 10px 20px;
 }
 
-.controls,
-.results-box {
+.controls, .end-form {
     display: flex;
     align-items: center;
     justify-content: center;

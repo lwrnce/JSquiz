@@ -23,6 +23,7 @@ function startQuiz() {
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
     questionContainer.classList.remove('hide')
+    endForm.classList.add('hide')
     startTimer()
     nextQuestion()
 }
@@ -59,6 +60,11 @@ function showQuestion(question) {
 
 function submitQuiz() {
     reset()
+    questionContainer.classList.add('hide')
+    endForm.classList.remove('hide')
+    submitButton.classList.add('hide')
+    startButton.classList.remove('hide')
+    startButton.innerText = "Take it again"
 }
 
 function reset() {
@@ -77,7 +83,6 @@ function yourAnswer(e) {
         nextButton.classList.remove('hide')
     } else {
         submitButton.classList.remove('hide')
-        endForm.classList.remove('hide')
         // startButton.innerText = 'Take it again!'
         // startButton.classList.remove('hide')
     }
