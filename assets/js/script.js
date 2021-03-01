@@ -3,17 +3,19 @@ const questionContainer = document.getElementById('quiz-box')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const nextButton = document.getElementById('next-btn')
-const timeLeft = document.getElementById('timeLeft')
 const submitButton = document.getElementById('submit-btn')
+const endForm = document.getElementById('end-form')
 
 var sec
 let shuffledQuestions, currentQuestionIndex
+var score = 0
 
 startButton.addEventListener('click', startQuiz)
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++
     nextQuestion()
 })
+submitButton.addEventListener('click', submitQuiz)
 
 function startQuiz() {
     startButton.classList.add('hide')
@@ -55,6 +57,10 @@ function showQuestion(question) {
     })
 }
 
+function submitQuiz() {
+    reset()
+}
+
 function reset() {
     clearClass(document.body)
     nextButton.classList.add('hide')
@@ -67,25 +73,34 @@ function yourAnswer(e) {
     const selectedAnswer = e.target
     const correct = selectedAnswer.dataset.correct
     answerCheck(document.body, correct)
-    Array.from(answerButtonsElement.children).forEach(button => {
-        answerCheck(button, button.dataset.correct)
-    })
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         nextButton.classList.remove('hide')
     } else {
-        startButton.innerText = ('Take it again!')
-        startButton.classList.remove('hide')
         submitButton.classList.remove('hide')
+        endForm.classList.remove('hide')
+        // startButton.innerText = 'Take it again!'
+        // startButton.classList.remove('hide')
     }
 }
 
 function answerCheck(element, correct) {
     clearClass(element)
     if (correct) {
+        score++
+    }
+    else {
+        sec-= 10
+    }
+    Array.from(answerButtonsElement.children).forEach(button => {
+        highlightCorrect(button, button.dataset.correct)
+    })
+}
+
+function highlightCorrect(element, correct) {
+    if (correct) {
         element.classList.add('correct')
     } else {
         element.classList.add('incorrect')
-        sec -= 3
     }
 }
 
@@ -118,7 +133,7 @@ const questions = [
     
     },
 
-    {
+    /*{
         question:'Commonly used data structures DO NOT include:',
         answers: [
             { text: 'strings', correct: false },
@@ -171,6 +186,5 @@ const questions = [
             { text: '<body>', correct: false },
         ] 
     
-    }
+    }*/
 ]
-
