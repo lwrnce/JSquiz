@@ -83,8 +83,6 @@ function yourAnswer(e) {
         nextButton.classList.remove('hide')
     } else {
         submitButton.classList.remove('hide')
-        // startButton.innerText = 'Take it again!'
-        // startButton.classList.remove('hide')
     }
 }
 
@@ -138,7 +136,7 @@ const questions = [
     
     },
 
-    /*{
+    {
         question:'Commonly used data structures DO NOT include:',
         answers: [
             { text: 'strings', correct: false },
@@ -191,5 +189,5 @@ const questions = [
             { text: '<body>', correct: false },
         ] 
     
-    }*/
+    }
 ]
