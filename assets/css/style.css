@@ -23,8 +23,12 @@ body {
     background-color: var(--light-black);
 }
 
+.scores {
+    text-decoration: none;
+}
+
 .container {
-    width: 60%;
+    width: 100%;
     background-color: white;
     border-radius: 5px;
     padding: 50px;
@@ -67,7 +71,7 @@ body {
     justify-content: center;
 }
 
-.start-btn, .submit-btn {
+.start-btn, .next-btn, .submit-btn {
     font-size: 2rem;
     font-weight: bold;
     padding: 10px 20px;
